@@ -1,10 +1,9 @@
 # Precision matrix from
-# Lindgren, Rue, Lindtröm (2011) An explicit link ...
-
-
-# function Q_matern2d(node::Int, nnode, nrow, ncol, prec, range, nu)
-#     Q_matern2d([node], [nnode], nrow, ncol, prec, range, nu)[1]
-# end
+# Lindgren, F., Rue, H. and Lindström, J. (2011), 
+# An explicit link between Gaussian fields and Gaussian Markov random fields: 
+# the stochastic partial differential equation approach. 
+# Journal of the Royal Statistical Society: Series B (Statistical Methodology), 73: 423-498. 
+# https://doi.org/10.1111/j.1467-9868.2011.00777.x
 
 function Q_matern2d_fun(prec, range, nu)
     @assert nu == 2
