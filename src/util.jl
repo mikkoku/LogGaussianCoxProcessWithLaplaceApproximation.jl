@@ -10,6 +10,7 @@ Base.:\(x::OptimCholWrapper, y::Vector{T}) where T = x.data\y
 Base.copy(x::OptimCholWrapper) = x #OptimCholWrapper(copy(x.data))
 Base.show(io::IO, X::OptimCholWrapper) = show(io, X.data)
 LinearAlgebra.logdet(x::OptimCholWrapper) = logdet(x.data)
+Base._all(::typeof(isfinite), itr::OptimCholWrapper, ::Colon) = true
 
 
 function lambertwexp(x)
