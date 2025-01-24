@@ -4,6 +4,13 @@ struct Discretization{WT, GT <: AbstractRange}
     gridy::GT
     window::WT
 end
+function Discretization(size, window)
+    nx, ny = size
+    wx, wy = window
+    stepx = (wx[2]-wx[1])/nx
+    stepy = (wy[2]-wy[1])/ny
+    Discretization(size, wx[1]+stepx/2:stepx:wx[2], wy[1]+stepy/2:stepy:wy[2], window)
+end
 function Discretization(grid::AbstractRange, window)
     n = length(grid)
     Discretization((n, n), grid, grid, window)
