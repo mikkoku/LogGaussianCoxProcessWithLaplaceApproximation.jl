@@ -55,12 +55,14 @@ function LaplaceApproximation(gridsize, locationweight, integration_weights, Q, 
 end
 
 function poisson_hatZ(la::LaplaceApproximation, fixed_field::Number, Q)
-    poisson_hatZ(la, FillArrays.Fill(fixed_field, la.size), Q)
+    fill!(la.x, fixed_field)
+    poisson_hatZ(la, Q)
 end
 function poisson_hatZ(la::LaplaceApproximation, fixed_field, Q)
-    gridsize = size(fixed_field)
     copy!(la.x, fixed_field)
-
+    poisson_hatZ(la, Q)
+end
+function poisson_hatZ(la::LaplaceApproximation, Q)
     copy!(la.Q, Q.data)
     initial = vec(initial_guess(la.x, la.y, Q[1]))
     obj = la.obj
